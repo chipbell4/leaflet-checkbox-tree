@@ -1,6 +1,4 @@
 (function() {
-
-
   L.Control.CheckboxTree.stubParentRow = function(options) {
     // defaults
     options.id = options.id || '';
