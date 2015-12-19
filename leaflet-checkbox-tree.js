@@ -46,8 +46,13 @@ L.Control.CheckboxTree = L.Control.extend({
       }); 
     }
 
-    // stop event propagation for internal events that would cause the map the react
-    L.DomEvent.on(container, 'click', L.DomEvent.stopPropagation);
+    // stop event propagation for internal events that would cause the map to react
+    container.addEventListener('mouseover', function() {
+      map.dragging.disable();
+    });
+    container.addEventListener('mouseout', function() {
+      map.dragging.enable();
+    });
     L.DomEvent.on(container, 'mousewheel', L.DomEvent.stopPropagation);
     L.DomEvent.on(container, 'dblclick', L.DomEvent.stopPropagation);
 
