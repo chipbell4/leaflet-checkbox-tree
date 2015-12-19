@@ -14,7 +14,7 @@ L.Control.CheckboxTree = L.Control.extend({
 
     // Create a row for each group of items provided
     var items = this.options.items || {};
-    var keys = Object.keys(items).sort();
+    var keys = Object.keys(items);
     var N = keys.length;
     for(var i = 0; i < N; i++) {
       L.Control.CheckboxTree.stubParentRow({
