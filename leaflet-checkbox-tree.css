@@ -2,6 +2,8 @@
   border-radius: 4px;
   background-color: white;
   padding: 10px;
+  max-height: 400px;
+  overflow-y: scroll;
 }
 .checkbox-tree .parent-row .arrow {
   display: inline-block;
