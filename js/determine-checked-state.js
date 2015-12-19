@@ -5,13 +5,15 @@
    * @param {Node} container The container for the checkboxes
    */
   L.Control.CheckboxTree.determineCheckedState = function(container) {
+    var k, N, checkbox;
+
     // Get all checked and unchecked *child* items
     var li = container.getElementsByTagName('li');
     var uncheckedItems = [];
     var checkedItems = [];
-    var N = li.length;
-    for(var k = 0; k < N; k++) {
-      var checkbox = li[k].firstChild.firstChild;
+    N = li.length;
+    for(k = 0; k < N; k++) {
+      checkbox = li[k].firstChild.firstChild;
       if(checkbox.checked) {
         checkedItems.push(checkbox.nextSibling.textContent);
       } else {
@@ -22,8 +24,8 @@
     // get all parents with no children that are checked
     var rows = container.getElementsByClassName('no-children');
     N = rows.length;
-    for(var k = 0; k < N; k++) {
-      var checkbox = rows[k].getElementsByTagName('input')[0];
+    for(k = 0; k < N; k++) {
+      checkbox = rows[k].getElementsByTagName('input')[0];
       if(checkbox.checked) {
         checkedItems.push(checkbox.nextSibling.textContent);
       } else {
