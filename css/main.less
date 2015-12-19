@@ -4,6 +4,18 @@
     padding: 10px;
 
     .parent-row {
+
+        .arrow {
+            &::before {
+                content: "\25B8";
+            }
+
+            &.expanded::before {
+                content: "\25BE";
+            }
+        }
+
+
         ul {
             list-style-type: none;
             margin: 0;
