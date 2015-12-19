@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node_modules/jshint/bin/jshint js/*",
-    "js": "cat js/core.js js/parent-row.js js/child-row.js js/toggle-arrow.js | node_modules/uglifyjs/bin/uglifyjs > leaflet-checkbox-tree.min.js",
+    "js": "cat js/{core,parent-row,child-row,toggle-arrow}.js | node_modules/uglifyjs/bin/uglifyjs > leaflet-checkbox-tree.min.js",
     "less" : "node_modules/less/bin/lessc css/main.less > leaflet-checkbox-tree.min.css",
     "dist": "npm run js && npm run less"
   },
