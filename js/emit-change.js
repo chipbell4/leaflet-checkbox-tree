@@ -1,6 +1,5 @@
 (function() {
   L.Control.CheckboxTree.emitChange = function(container, listener) {
-    console.log(listener);
     if(!listener) {
       return;
     }
