@@ -17,7 +17,7 @@
     for(var k in inputs) {
       inputs[k].checked = newValue;
     }
-  }
+  };
 
   var onChecked = function(evt) {
     var isChecked = evt.target.checked;
