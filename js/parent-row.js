@@ -15,9 +15,13 @@
       options.onChange();
     };
 
-    // Add the arrow
+    // Add the arrow, if there are children to expand
     var arrow = L.DomUtil.create('span', 'arrow', row);
-    arrow.addEventListener('click', L.Control.CheckboxTree.toggleArrow.bind(this, row));
+    if(options.children.length > 0) {
+      arrow.addEventListener('click', L.Control.CheckboxTree.toggleArrow.bind(this, row));
+    } else {
+      arrow.className += ' empty';
+    }
 
     var label = L.DomUtil.create('label', '', row);
 
@@ -39,9 +43,12 @@
       checkbox.checked = checkedState.uncheckedItems.length === 0;
     };
 
-    // Add the container for the children
-    var childrenContainer = L.DomUtil.create('ul', '', row);
+    // Add the container for the children, if there are children to add
     var N = options.children.length;
+    if(N === 0) {
+      return row;
+    }
+    var childrenContainer = L.DomUtil.create('ul', '', row);
     for(var i = 0; i < N; i++) {
       L.Control.CheckboxTree.stubChildRow({
         container: childrenContainer,
