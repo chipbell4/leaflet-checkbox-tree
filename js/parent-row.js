@@ -1,12 +1,5 @@
 (function() {
 
-  var setAllCheckedState = function(container, newValue) {
-    var inputs = container.getElementsByTagName('input');
-    for(var k in inputs) {
-      inputs[k].checked = newValue;
-    }
-  };
-
   var onChecked = function(evt) {
     var isChecked = evt.target.checked;
     console.log('isChecked?', isChecked);
