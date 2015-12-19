@@ -1,0 +1,16 @@
+{
+  "name": "leaflet-tree-view",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jshint": "^2.8.0",
+    "uglifyjs": "^2.4.10"
+  }
+}
