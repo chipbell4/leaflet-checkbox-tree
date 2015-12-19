@@ -18,19 +18,20 @@
         }
 
         ul {
-            display: none;
-        }
-
-        &.expanded ul {
-            display: block;
             list-style-type: none;
-            margin: 0;
             padding-left: 1em;
-
+            max-height: 0;
+            overflow: hidden;
+            margin: 0;
+            
             li {
                 padding-top: 0.25em;
                 padding-bottom: 0.25em;
             }
+        }
+
+        &.expanded ul {
+            max-height: 200px;
         }
     }
 }
