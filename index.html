@@ -47,7 +47,7 @@
             }).addTo(map);
 
             var checkboxTree = new L.Control.CheckboxTree({
-                onChange: function() { console.log(arguments); }
+                onChange: function(evt) { console.log(evt); }
             });
             map.addControl(checkboxTree);
         </script>
