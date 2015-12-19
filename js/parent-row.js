@@ -12,6 +12,10 @@
     parentRow.className = 'parent-row';
   };
 
+  var onChecked = function(evt) {
+    console.log(evt);
+  };
+
   L.Control.CheckboxTree.stubParentRow = function(options) {
     // defaults
     options.id = options.id || '';
@@ -25,6 +29,13 @@
 
     var arrow = L.DomUtil.create('span', 'arrow', row);
     arrow.addEventListener('click', toggleArrow);
+
+    var label = L.DomUtil.create('label', '', row);
+    var checkbox = L.DomUtil.create('input', '', label);
+    checkbox.type = 'checkbox';
+    checkbox.addEventListener('click', onChecked);
+    var text = L.DomUtil.create('span', '', label);
+    text.innerText = options.text;
 
     return row;
   };
