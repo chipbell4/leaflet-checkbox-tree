@@ -1,8 +1,7 @@
 (function() {
 
-  var onChecked = function(evt) {
-    var isChecked = evt.target.checked;
-    console.log('isChecked?', isChecked);
+  var onChecked = function(container, evt) {
+    L.Control.CheckboxTree.setAllCheckedState(container, evt.target.checked);
   };
 
   L.Control.CheckboxTree.stubParentRow = function(options) {
@@ -25,7 +24,7 @@
     // Add the checkbox
     var checkbox = L.DomUtil.create('input', '', label);
     checkbox.type = 'checkbox';
-    checkbox.addEventListener('click', onChecked);
+    checkbox.addEventListener('click', onChecked.bind(this, row));
 
     // Add the text label
     var text = L.DomUtil.create('span', '', label);
