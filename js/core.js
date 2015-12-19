@@ -46,7 +46,7 @@ L.Control.CheckboxTree = L.Control.extend({
       }); 
     }
 
-    // stop event propagation for internal events that would cause the map the react
+    // stop event propagation for internal events that would cause the map to react
     container.addEventListener('mouseover', function() {
       map.dragging.disable();
     });
