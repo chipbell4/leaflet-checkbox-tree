@@ -35,8 +35,8 @@
 
       // update parent checkbox state to match "total" of children
       var checkedState = L.Control.CheckboxTree.determineCheckedState(row);
-      checkbox.indeterminate = checkedState.uncheckedItems.length != 0 && checkedState.checkedItems.length != 0;
-      checkbox.checked = checkedState.uncheckedItems.length == 0;
+      checkbox.indeterminate = checkedState.uncheckedItems.length !== 0 && checkedState.checkedItems.length !== 0;
+      checkbox.checked = checkedState.uncheckedItems.length === 0;
     };
 
     // Add the container for the children
