@@ -1,17 +1,17 @@
 (function() {
   L.Control.CheckboxTree.determineCheckedState = function(container) {
-    var ul = container.getElementsByTagName('ul')[0];
-    var checkboxes = ul.getElementsByTagName('input');
+    var li = container.getElementsByTagName('li');
     
     // Separate items by being checked or unchecked
     var uncheckedItems = [];
     var checkedItems = [];
-    var N = checkboxes.length;
+    var N = li.length;
     for(var k = 0; k < N; k++) {
-      if(checkboxes[k].checked) {
-        checkedItems.push(checkboxes[k].nextSibling.textContent);
+      var checkbox = li[k].firstChild.firstChild;
+      if(checkbox.checked) {
+        checkedItems.push(checkbox.nextSibling.textContent);
       } else {
-        uncheckedItems.push(checkboxes[k].nextSibling.textContent);
+        uncheckedItems.push(checkbox.nextSibling.textContent);
       }
     }
 
