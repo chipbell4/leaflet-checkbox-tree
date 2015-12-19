@@ -32,6 +32,15 @@
     var text = L.DomUtil.create('span', '', label);
     text.innerText = options.text;
 
+    var onChildClick = function() {
+      options.onChange();
+
+      // update parent checkbox state to match "total" of children
+      var checkedState = L.Control.CheckboxTree.determineCheckedState(row);
+      checkbox.indeterminate = checkedState.uncheckedItems.length != 0 && checkedState.checkedItems.length != 0;
+      checkbox.checked = checkedState.uncheckedItems.length == 0;
+    };
+
     // Add the container for the children
     var childrenContainer = L.DomUtil.create('ul', '', row);
     var N = options.children.length;
@@ -39,7 +48,7 @@
       L.Control.CheckboxTree.stubChildRow({
         container: childrenContainer,
         text: options.children[i],
-        onClick: options.onChange
+        onClick: onChildClick
       });
     }
 
