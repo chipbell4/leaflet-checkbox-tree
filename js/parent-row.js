@@ -1,8 +1,5 @@
 (function() {
 
-  var onChecked = function(container, evt) {
-    L.Control.CheckboxTree.setAllCheckedState(container, evt.target.checked);
-  };
 
   L.Control.CheckboxTree.stubParentRow = function(options) {
     // defaults
@@ -11,6 +8,11 @@
     options.text = options.text || '';
     options.children = options.children || [];
     options.container = options.container || null;
+  
+    var onChecked = function(evt) {
+      L.Control.CheckboxTree.setAllCheckedState(options.container, evt.target.checked);
+      options.onChange();
+    };
 
     var row = L.DomUtil.create('div', 'parent-row', options.container);
     row.id = options.id;
@@ -24,7 +26,7 @@
     // Add the checkbox
     var checkbox = L.DomUtil.create('input', '', label);
     checkbox.type = 'checkbox';
-    checkbox.addEventListener('click', onChecked.bind(this, row));
+    checkbox.addEventListener('click', onChecked);
 
     // Add the text label
     var text = L.DomUtil.create('span', '', label);
