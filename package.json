@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "jshint js/*",
-    "minjs" : "uglifyjs leaflet-checkbox-tree.js > leaflet-checkbox-tree.min.js",
+    "minifyjs": "uglifyjs leaflet-checkbox-tree.js > leaflet-checkbox-tree.min.js",
+    "minifycss" : "uglifycss leaflet-checkbox-tree.css > leaflet-checkbox-tree.min.css",
     "js": "cat js/{core,parent-row,child-row,toggle-arrow,set-all-checked-state,determine-checked-state,emit-change}.js > leaflet-checkbox-tree.js",
-    "less" : "lessc css/main.less > leaflet-checkbox-tree.min.css",
-    "minify" : "npm run js && npm run minjs",
-    "dist": "npm run minify && npm run less"
+    "less": "lessc css/main.less > leaflet-checkbox-tree.css",
+    "bundle" : "npm run js & npm run less",
+    "minify" : "npm run minifyjs & npm run minifycss",
+    "dist": "npm run bundle && npm run minify"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +19,7 @@
   "devDependencies": {
     "jshint": "^2.8.0",
     "less": "^2.5.3",
+    "uglifycss": "0.0.19",
     "uglifyjs": "^2.4.10"
   }
 }
