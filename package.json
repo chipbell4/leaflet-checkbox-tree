@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "node_modules/jshint/bin/jshint src/*",
-    "dist": "cat js/* | node_modules/uglifyjs/bin/uglifyjs > leaflet-checkbox-tree.min.js"
+    "js": "cat js/* | node_modules/uglifyjs/bin/uglifyjs > leaflet-checkbox-tree.min.js",
+    "dist": "npm run js"
   },
   "keywords": [],
   "author": "",
