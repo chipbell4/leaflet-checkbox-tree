@@ -6,14 +6,14 @@
     options.text = options.text || '';
     options.children = options.children || [];
     options.container = options.container || null;
-  
-    var onChecked = function(evt) {
-      L.Control.CheckboxTree.setAllCheckedState(options.container, evt.target.checked);
-      options.onChange();
-    };
 
     var row = L.DomUtil.create('div', 'parent-row', options.container);
     row.id = options.id;
+  
+    var onChecked = function(evt) {
+      L.Control.CheckboxTree.setAllCheckedState(row, evt.target.checked);
+      options.onChange();
+    };
 
     // Add the arrow
     var arrow = L.DomUtil.create('span', 'arrow', row);
