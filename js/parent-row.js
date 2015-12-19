@@ -12,8 +12,16 @@
     parentRow.className = 'parent-row';
   };
 
+  var setAllCheckedState = function(container, newValue) {
+    var inputs = container.getElementsByTagName('input');
+    for(var k in inputs) {
+      inputs[k].checked = newValue;
+    }
+  }
+
   var onChecked = function(evt) {
-    console.log(evt);
+    var isChecked = evt.target.checked;
+    console.log('isChecked?', isChecked);
   };
 
   L.Control.CheckboxTree.stubParentRow = function(options) {
