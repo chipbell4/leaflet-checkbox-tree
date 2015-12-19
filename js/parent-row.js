@@ -7,7 +7,7 @@
   L.Control.CheckboxTree.stubParentRow = function(options) {
     // defaults
     options.id = options.id || '';
-    options.onClick = options.onClick || function() {};
+    options.onChange = options.onChange || function() {};
     options.text = options.text || '';
     options.children = options.children || [];
     options.container = options.container || null;
@@ -37,9 +37,7 @@
       L.Control.CheckboxTree.stubChildRow({
         container: childrenContainer,
         text: options.children[i],
-        onClick: function() {
-          console.log(L.Control.CheckboxTree.determineCheckedState(row));
-        }
+        onClick: options.onChange
       });
     }
 
