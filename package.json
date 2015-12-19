@@ -6,13 +6,15 @@
   "scripts": {
     "test": "node_modules/jshint/bin/jshint src/*",
     "js": "cat js/* | node_modules/uglifyjs/bin/uglifyjs > leaflet-checkbox-tree.min.js",
-    "dist": "npm run js"
+    "less" : "node_modules/less/bin/lessc css/main.less > leaflet-checkbox-tree.min.css",
+    "dist": "npm run js && npm run less"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "jshint": "^2.8.0",
+    "less": "^2.5.3",
     "uglifyjs": "^2.4.10"
   }
 }
