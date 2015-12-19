@@ -37,7 +37,9 @@
       L.Control.CheckboxTree.stubChildRow({
         container: childrenContainer,
         text: options.children[i],
-        onClick: function() { }
+        onClick: function() {
+          console.log(L.Control.CheckboxTree.determineCheckedState(row));
+        }
       });
     }
 
