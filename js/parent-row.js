@@ -1,17 +1,5 @@
 (function() {
 
-  var toggleArrow = function(evt) {
-    var parentRow = evt.target.parentNode;
-
-    // remove the expanded class if its there. Otherwise, add it
-    if(parentRow.className.indexOf('expanded') == -1) {
-      parentRow.className += ' expanded';
-      return;
-    }
-
-    parentRow.className = 'parent-row';
-  };
-
   var setAllCheckedState = function(container, newValue) {
     var inputs = container.getElementsByTagName('input');
     for(var k in inputs) {
@@ -37,7 +25,7 @@
 
     // Add the arrow
     var arrow = L.DomUtil.create('span', 'arrow', row);
-    arrow.addEventListener('click', toggleArrow);
+    arrow.addEventListener('click', L.Control.CheckboxTree.toggleArrow.bind(this, row));
 
     var label = L.DomUtil.create('label', '', row);
 
