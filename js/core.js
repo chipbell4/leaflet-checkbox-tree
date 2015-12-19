@@ -6,7 +6,12 @@ L.Control.CheckboxTree = L.Control.extend({
     L.Control.CheckboxTree.stubParentRow({
       text: 'FAA',
       id: 'FAA',
-      container: container
+      container: container,
+      children: [
+        'FAA 12345',
+        'FAA 22345',
+        'FAA 32345',
+      ]
     }); 
 
     return container;
