@@ -16,7 +16,7 @@
 
     // add the label
     var text = L.DomUtil.create('span', '', label);
-    text.innerText = options.text
+    text.innerText = options.text;
 
     return listElement;
   };
