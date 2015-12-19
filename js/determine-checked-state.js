@@ -1,4 +1,9 @@
 (function() {
+  /**
+   * Function to crawl the control and determine which checkboxes are checked, for passing to listeners via an event
+   *
+   * @param {Node} container The container for the checkboxes
+   */
   L.Control.CheckboxTree.determineCheckedState = function(container) {
     // Get all checked and unchecked *child* items
     var li = container.getElementsByTagName('li');
