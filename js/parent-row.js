@@ -50,6 +50,16 @@
     var text = L.DomUtil.create('span', '', label);
     text.innerText = options.text;
 
+    // Add the container for the children
+    var childrenContainer = L.DomUtil.create('ul', '', row);
+    var N = options.children.length;
+    for(var i = 0; i < N; i++) {
+      L.Control.CheckboxTree.stubChildRow({
+        container: childrenContainer,
+        text: options.children[i]
+      });
+    }
+
     return row;
   };
 })();
