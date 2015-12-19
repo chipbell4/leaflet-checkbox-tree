@@ -20,7 +20,12 @@
             }).addTo(map);
 
             var checkboxTree = new L.Control.CheckboxTree({
-                onChange: function(evt) { console.log(evt); }
+                onChange: function(evt) { console.log(evt); },
+                items: {
+                    FAA: [ 'FAA 12345', 'FAA 23456', 'FAA 34567' ],
+                    ABC: [ 'ABC 12345', 'ABC 00001' ],
+                    XYZ: [ 'XYZ 99999' ]
+                }
             });
             map.addControl(checkboxTree);
         </script>

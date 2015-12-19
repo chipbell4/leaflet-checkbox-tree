@@ -12,17 +12,19 @@ L.Control.CheckboxTree = L.Control.extend({
       L.Control.CheckboxTree.emitChange(container, this.options.onChange);
     }).bind(this);
 
-    L.Control.CheckboxTree.stubParentRow({
-      text: 'FAA',
-      id: 'FAA',
-      container: container,
-      onChange: onChange,
-      children: [
-        'FAA 12345',
-        'FAA 22345',
-        'FAA 32345',
-      ]
-    }); 
+    // Create a row for each group of items provided
+    var items = this.options.items || {};
+    var keys = Object.keys(items).sort();
+    var N = keys.length;
+    for(var i = 0; i < N; i++) {
+      L.Control.CheckboxTree.stubParentRow({
+        text: keys[i],
+        id: keys[i], // TODO: Is this used
+        container: container,
+        onChange: onChange,
+        children: items[keys[i]]
+      }); 
+    }
 
     return container;
   }
