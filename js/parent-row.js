@@ -7,7 +7,11 @@
     options.children = options.children || [];
     options.container = options.container || null;
 
-    var row = L.DomUtil.create('div', 'parent-row', options.container);
+    var className = 'parent-row';
+    if(options.children.length === 0) {
+      className += ' no-children';
+    }
+    var row = L.DomUtil.create('div', className, options.container);
     row.id = options.id;
   
     var onChecked = function(evt) {
@@ -19,8 +23,6 @@
     var arrow = L.DomUtil.create('span', 'arrow', row);
     if(options.children.length > 0) {
       arrow.addEventListener('click', L.Control.CheckboxTree.toggleArrow.bind(this, row));
-    } else {
-      arrow.className += ' empty';
     }
 
     var label = L.DomUtil.create('label', '', row);
