@@ -13,33 +13,6 @@
     </head>
     <body>
         <div id="map"></div>
-        <div class="checkbox-tree">
-            <div class="parent-row">
-                <span class="arrow"></span><label><input type="checkbox" />Hey</label>
-                <ul>
-                    <li class="child-row">
-                        <label><input type="checkbox" />Hey</label>
-                    </li>
-                    <li class="child-row">
-                        <label><input type="checkbox" />Hey</label>
-                    </li>
-                    <li class="child-row">
-                        <label><input type="checkbox" />Hey</label>
-                    </li>
-                </ul>
-            </div>
-            <div class="parent-row expanded">
-                <span class="arrow"></span><label><input type="checkbox" />Hey</label>
-                <ul>
-                    <li class="child-row">
-                        <label><input type="checkbox" />Hey</label>
-                    </li>
-                    <li class="child-row">
-                        <label><input type="checkbox" />Hey</label>
-                    </li>
-                </ul>
-            </div>
-        </div>
         <script>
             var map = L.map('map').setView([51.505, -0.09], 13);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
