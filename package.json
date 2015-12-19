@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/jshint/bin/jshint js/*",
-    "js": "cat js/{core,parent-row,child-row,toggle-arrow,set-all-checked-state,determine-checked-state,emit-change}.js | node_modules/uglifyjs/bin/uglifyjs > leaflet-checkbox-tree.min.js",
-    "less" : "node_modules/less/bin/lessc css/main.less > leaflet-checkbox-tree.min.css",
-    "dist": "npm run js && npm run less"
+    "test": "jshint js/*",
+    "minjs" : "uglifyjs leaflet-checkbox-tree.js > leaflet-checkbox-tree.min.js",
+    "js": "cat js/{core,parent-row,child-row,toggle-arrow,set-all-checked-state,determine-checked-state,emit-change}.js > leaflet-checkbox-tree.js",
+    "less" : "lessc css/main.less > leaflet-checkbox-tree.min.css",
+    "minify" : "npm run js && npm run minjs",
+    "dist": "npm run minify && npm run less"
   },
   "keywords": [],
   "author": "",
