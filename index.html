@@ -23,13 +23,20 @@
                 onChange: function(evt) { console.log(evt); },
                 items: {
                     'No Kids' : null,
-                    Girls: [ 'April', 'Maria' ],
                     Guys: [
-                        'Bob',
-                        'Chip',
-                        'Josh',
+                        {
+                            text: 'Bob',
+                            checked: true
+                        },
+                        {
+                            text: 'Chip',
+                            checked: true
+                        },
+                        {
+                            text: 'Josh',
+                            checked: false
+                        },
                     ],
-                    Dogs: [ 'Fido' ] // Maybe a boy?
                 }
             });
             map.addControl(checkboxTree);

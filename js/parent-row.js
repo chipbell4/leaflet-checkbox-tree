@@ -68,7 +68,8 @@
     for(var i = 0; i < N; i++) {
       L.Control.CheckboxTree.stubChildRow({
         container: childrenContainer,
-        text: options.children[i],
+        text: options.children[i].text,
+        checked: options.children[i].checked,
         onClick: onChildClick
       });
     }
