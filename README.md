@@ -20,10 +20,26 @@ var tree = new L.Control.CheckboxTree({
   onChange: function(evt) {
     console.log(evt);
   },
-  items: {
-    'Parent 1' : null,
-    'Parent 2' : ['Child 1', 'Child 2']
-  }
+  items: [
+    {
+      text: 'Parent 1',
+      checked: true,
+      children: null
+    },
+    {
+      text: 'Parent 2',
+      children: [
+        {
+          text: 'Child 1',
+          checked: true
+        },
+        {
+          text: 'Child 2',
+          checked: false
+        }
+      ]
+    }
+  ]
 });
 
 map.addControl(tree);
@@ -34,12 +50,10 @@ checked and the passed event will provide a `target` that points to the DOM node
 array, and an `uncheckedItems` array. Both `checkedItems` and `uncheckedItems` are arrays of strings with the current
 list of checked and unchecked items respectively.
 
-Also note the `items` object, which dictates the structure of the tree. The keys of this object denote the labels to
-associate with parents. The values dictate the list of children to associate with that parent. If there are no children
-the parent won't have an arrow, and will be also be included in the list of checked and unchecked items. For instance,
-in the above case, "Parent 1" will be standalone and have no children, and "Parent 2" will have a two children:
-"Child 1" and "Child 2". Moreover, if any checkbox changes, "Child 1", "Child 2" *and* "Parent 1" would be included in
-either `checkedItems` or `uncheckedItems` during an change event depending on their checked state. For instance, if
-"Parent 1" and "Child 2" were checked and then the user clicked "Child 1" to *uncheck it*, a change event would be
-thrown and `checkedItems` would contain both "Parent 1" and "Child 2", and `uncheckedItems` would contain only
-"Child 1".
+Also note the `items` array, which dictates the structure of the tree. Each element in this array is an object
+dictating a parent item. For each of these items, the `text` key dictates the text to display, and `children` is an
+array of objects dictating any child checkboxes to nest. If a parent has no children, then it will be treated as a
+stand-alone checkbox that will also be included in `checkedItems` and `uncheckedItems` during events.
+
+Parents without children, or children themselves can set their default checked state by setting the `checked` key to
+true or false. This value defaults to false.
