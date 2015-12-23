@@ -7,20 +7,26 @@ L.Control.CheckboxTree = L.Control.extend({
    *                         when any checkbox changes. An event with an updated list of checked and unchecked items
    *                         will be provided. Also, an items object will be provided that specifies the items in the
    *                         tree. For instance:
-   *                         items : {
-   *                           'Search Region' : null, // This is a parent item with no children
-   *                           'GUYS'          : [
-   *                             // These are the children to show
-   *                             {
-   *                               text: 'Bob',
-   *                               checked: true
-   *                             },
-   *                             {
-   *                               text: 'Chip',
-   *                               checked: true
-   *                             }
-   *                           ] 
-   *                         }
+   *                         items : [
+   *                           {
+   *                             text: 'Search Region',
+   *                             children: null,
+   *                             checked: true
+   *                           },
+   *                           {
+   *                             text: 'Guys',
+   *                             children: [
+   *                               {
+   *                                 text: 'Bob',
+   *                                 checked: true
+   *                               },
+   *                               {
+   *                                 text: 'Josh',
+   *                                 checked: false
+   *                               }
+   *                             ]
+   *                           }
+   *                         ]
    *
    */
   initialize: function(options) {
@@ -43,16 +49,14 @@ L.Control.CheckboxTree = L.Control.extend({
     }).bind(this);
 
     // Create a row for each group of items provided
-    var items = this.options.items || {};
-    var keys = Object.keys(items);
-    var N = keys.length;
+    var items = this.options.items || [];
+    var N = items.length;
     for(var i = 0; i < N; i++) {
       L.Control.CheckboxTree.stubParentRow({
-        text: keys[i],
-        id: keys[i],
+        text: items[i].text,
         container: container,
         onChange: onChange,
-        children: items[keys[i]]
+        children: items[i].children
       }); 
     }
 

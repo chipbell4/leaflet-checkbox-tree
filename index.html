@@ -21,23 +21,26 @@
 
             var checkboxTree = new L.Control.CheckboxTree({
                 onChange: function(evt) { console.log(evt); },
-                items: {
-                    'No Kids' : null,
-                    Guys: [
-                        {
-                            text: 'Bob',
-                            checked: true
-                        },
-                        {
-                            text: 'Chip',
-                            checked: true
-                        },
-                        {
-                            text: 'Josh',
-                            checked: false
-                        },
-                    ],
-                }
+                items: [
+                    {
+                        text: 'No Kids',
+                        children: null,
+                        checked: true
+                    },
+                    {
+                        text: 'Guys',
+                        children: [
+                            {
+                                text: 'Bob',
+                                checked: true
+                            },
+                            {
+                                text: 'Josh',
+                                checked: true
+                            }
+                        ]
+                    }
+                ]
             });
             map.addControl(checkboxTree);
         </script>
