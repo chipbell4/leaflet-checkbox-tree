@@ -22,18 +22,14 @@
             var checkboxTree = new L.Control.CheckboxTree({
                 onChange: function(evt) { console.log(evt); },
                 items: {
-                    'Search Region' : null,
-                    FAA: [
-                        'FAA 12345',
-                        'FAA 22345',
-                        'FAA 32345',
-                        'FAA 42345',
-                        'FAA 52345',
-                        'FAA 62345',
-                        'FAA 72345',
+                    'No Kids' : null,
+                    Girls: [ 'April', 'Maria' ],
+                    Guys: [
+                        'Bob',
+                        'Chip',
+                        'Josh',
                     ],
-                    ABC: [ 'ABC 12345', 'ABC 00001' ],
-                    XYZ: [ 'XYZ 99999' ]
+                    Dogs: [ 'Fido' ] // Maybe a boy?
                 }
             });
             map.addControl(checkboxTree);

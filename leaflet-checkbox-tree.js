@@ -9,7 +9,7 @@ L.Control.CheckboxTree = L.Control.extend({
    *                         tree. For instance:
    *                         items : {
    *                           'Search Region' : null, // This is a parent item with no children
-   *                           'FAA'           : ['FAA 12345', 'FAA 23456'], // These are the children to show
+   *                           'GUYS'          : ['Bob', 'Chip'], // These are the children to show
    *                         }
    *
    */
