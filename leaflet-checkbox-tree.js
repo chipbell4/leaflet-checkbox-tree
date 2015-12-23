@@ -7,10 +7,26 @@ L.Control.CheckboxTree = L.Control.extend({
    *                         when any checkbox changes. An event with an updated list of checked and unchecked items
    *                         will be provided. Also, an items object will be provided that specifies the items in the
    *                         tree. For instance:
-   *                         items : {
-   *                           'Search Region' : null, // This is a parent item with no children
-   *                           'GUYS'          : ['Bob', 'Chip'], // These are the children to show
-   *                         }
+   *                         items : [
+   *                           {
+   *                             text: 'Search Region',
+   *                             children: null,
+   *                             checked: true
+   *                           },
+   *                           {
+   *                             text: 'Guys',
+   *                             children: [
+   *                               {
+   *                                 text: 'Bob',
+   *                                 checked: true
+   *                               },
+   *                               {
+   *                                 text: 'Josh',
+   *                                 checked: false
+   *                               }
+   *                             ]
+   *                           }
+   *                         ]
    *
    */
   initialize: function(options) {
@@ -33,16 +49,15 @@ L.Control.CheckboxTree = L.Control.extend({
     }).bind(this);
 
     // Create a row for each group of items provided
-    var items = this.options.items || {};
-    var keys = Object.keys(items);
-    var N = keys.length;
+    var items = this.options.items || [];
+    var N = items.length;
     for(var i = 0; i < N; i++) {
       L.Control.CheckboxTree.stubParentRow({
-        text: keys[i],
-        id: keys[i],
+        text: items[i].text,
+        checked: items[i].checked,
         container: container,
         onChange: onChange,
-        children: items[keys[i]]
+        children: items[i].children
       }); 
     }
 
@@ -103,6 +118,7 @@ L.Control.CheckboxTree = L.Control.extend({
     var checkbox = L.DomUtil.create('input', '', label);
     checkbox.type = 'checkbox';
     checkbox.addEventListener('click', onChecked);
+    checkbox.checked = options.checked;
 
     // Add the text label
     var text = L.DomUtil.create('span', '', label);
@@ -129,11 +145,16 @@ L.Control.CheckboxTree = L.Control.extend({
     for(var i = 0; i < N; i++) {
       L.Control.CheckboxTree.stubChildRow({
         container: childrenContainer,
-        text: options.children[i],
+        text: options.children[i].text,
+        checked: options.children[i].checked,
         onClick: onChildClick
       });
     }
 
+    // update parent checkbox state to match "total" of children
+    var checkedState = L.Control.CheckboxTree.determineCheckedState(row);
+    checkbox.indeterminate = checkedState.uncheckedItems.length !== 0 && checkedState.checkedItems.length !== 0;
+    checkbox.checked = checkedState.uncheckedItems.length === 0;
     return row;
   };
 })();
@@ -162,6 +183,7 @@ L.Control.CheckboxTree = L.Control.extend({
     var checkbox = L.DomUtil.create('input', '', label);
     checkbox.type = 'checkbox';
     checkbox.addEventListener('click', options.onClick);
+    checkbox.checked = options.checked;
 
     // add the label
     var text = L.DomUtil.create('span', '', label);
