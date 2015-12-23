@@ -6,7 +6,8 @@
 }
 .checkbox-tree .parent-row .arrow {
   display: inline-block;
-  width: 0.75em;
+  padding-right: 0.5em;
+  font-size: 16px;
 }
 .checkbox-tree .parent-row .arrow::before {
   content: "\25B8";
@@ -19,7 +20,7 @@
 }
 .checkbox-tree .parent-row ul {
   list-style-type: none;
-  padding-left: 1em;
+  padding-left: 1.8em;
   max-height: 0;
   overflow: hidden;
   margin: 0;
