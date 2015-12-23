@@ -43,6 +43,10 @@ L.Control.CheckboxTree = L.Control.extend({
   onAdd: function(map) {
     var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar checkbox-tree topright');
 
+    // set the container's height so that it fills the maps width
+    var mapBounds = map._container.getBoundingClientRect();
+    container.style.height = '' + (mapBounds.bottom - mapBounds.top - 50) + 'px';
+
     // The global listener for changes. Essentially forwards the new state of the tree to the passed listener
     var onChange = (function() {
       L.Control.CheckboxTree.emitChange(container, this.options.onChange);
