@@ -54,6 +54,7 @@ L.Control.CheckboxTree = L.Control.extend({
     for(var i = 0; i < N; i++) {
       L.Control.CheckboxTree.stubParentRow({
         text: items[i].text,
+        checked: items[i].checked,
         container: container,
         onChange: onChange,
         children: items[i].children

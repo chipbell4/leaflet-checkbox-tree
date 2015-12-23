@@ -42,6 +42,7 @@
     var checkbox = L.DomUtil.create('input', '', label);
     checkbox.type = 'checkbox';
     checkbox.addEventListener('click', onChecked);
+    checkbox.checked = options.checked;
 
     // Add the text label
     var text = L.DomUtil.create('span', '', label);
